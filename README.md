@@ -7,5 +7,4 @@ Template with vagrant support for developping, nginix + gunicorn setup for produ
 Start project from template
 ===========================
 
-django-admin startproject --template=git@github.com:mmarksnippety/django-project-template.git --extension py,md,rst,sh project_name
-
+django-admin startproject --template=https://github.com/mmarksnippety/django-project-template/archive/master.zip --extension py,md,rst,sh project_name
