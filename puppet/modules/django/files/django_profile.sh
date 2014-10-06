@@ -2,15 +2,8 @@
 # setup all needed stuff with django
 
 #echo "Setup Django env variables"
-# export DJANGO_PROJECT='djangotest2'
-export DJANGO_PROJECT='vsms'
+export DJANGO_PROJECT='{{ project name }}'
 export DJANGO_SETTINGS_MODULE=$DJANGO_PROJECT.settings.vagrant
-
-#echo "Setup db env variables"
-export DB_NAME=$DJANGO_PROJECT
-export DB_USER=$DJANGO_PROJECT
-export DB_PASSWORD=$DJANGO_PROJECT
-export DB_HOST=localhost
 
 # install virtualenv
 which virtualenv > /dev/null 2>&1
@@ -23,12 +16,12 @@ which virtualenvwrapper.sh > /dev/null 2>&1
 if [ $? -ne 0 ]; then
     #echo "Install virtualenvwrapper"
     sudo pip3 install virtualenvwrapper
-    mkdir -p $HOME/.virtualenvs
+    mkdir -p /vagrant/virtualenv
 fi
 
 #echo "Setup virtualenvwrapper profile"
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=$HOME/.virtualenvs
+export WORKON_HOME=/vagrant/virtualenv
 export PROJECT_HOME=/vagrant/
 source /usr/local/bin/virtualenvwrapper.sh
 
