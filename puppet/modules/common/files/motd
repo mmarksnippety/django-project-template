@@ -1,8 +1,4 @@
-
 Usefulls commands
-django_runserver.sh
-django_setupenv.sh
-
-
-
-
+django-admin
+django-runserver.sh
+django-setupenv.sh
