@@ -2,7 +2,7 @@
 # setup all needed stuff with django
 
 #echo "Setup Django env variables"
-export DJANGO_PROJECT='{{ project name }}'
+export DJANGO_PROJECT='{{ project_name }}'
 export DJANGO_SETTINGS_MODULE=$DJANGO_PROJECT.settings.vagrant
 
 # install virtualenv
