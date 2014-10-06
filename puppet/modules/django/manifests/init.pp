@@ -2,17 +2,8 @@ class django {
 
     package {[
           'python3-pip',
-          'nodejs',
-          'nodejs-legacy',
-          'npm'
       ]:
       ensure => 'present',
-    }->
-
-    exec { 'install_bower' :
-        command => 'sudo npm install -g bower',
-        path    => ['/bin', '/usr/bin'],
-        unless  => 'which bower'
     }->
 
     file { '/home/vagrant/.bash_profile_rc/django_profile.sh' :
@@ -22,6 +13,16 @@ class django {
         group   => 'vagrant',
     }->
 
+    # scripts make executable
+    file { '/vagrant/scripts/django-runserver.sh' :
+        mode => '+x'
+    }->
+
+    file { '/vagrant/scripts/django-setupenv.sh' :
+        mode => '+x'
+    }->
+
+    # data base
     class {'postgresql::globals':
     #  version => '9.3',
     #  manage_package_repo => true,
@@ -30,7 +31,9 @@ class django {
         user => 'postgres',
     }->
 
-    class { 'postgresql::lib::devel': }->
+    class { 'postgresql::lib::devel':
+        link_pg_config => false
+    }->
 
     class { 'postgresql::server':
         postgres_password => 'django',

@@ -3,7 +3,7 @@
 
 #echo "Setup Django env variables"
 # export DJANGO_PROJECT='djangotest2'
-export DJANGO_PROJECT='{{ project_name }}'
+export DJANGO_PROJECT='vsms'
 export DJANGO_SETTINGS_MODULE=$DJANGO_PROJECT.settings.vagrant
 
 #echo "Setup db env variables"
